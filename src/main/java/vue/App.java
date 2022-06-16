@@ -9,7 +9,7 @@ import java.io.File;
 public class App extends Application{
     public void start(Stage stage)   {
         HBox root = new HBoxRoot();
-        Scene scene = new Scene(root,600,380);
+        Scene scene = new Scene(root,670,380);
         stage.setScene(scene);
         stage.setTitle("APLI");
         stage.show();
