@@ -9,6 +9,12 @@ public class HBoxRoot extends HBox {
     public HBoxRoot() {
         menuBar = new MenuBar();
         Menu senario = new Menu("Senario");
+        ToggleGroup senar = new ToggleGroup();
+        for (int i = 0; i < 4; i++) {
+            RadioMenuItem presenario = new RadioMenuItem("Senario " + i);
+            senario.getItems().addAll(presenario);
+            presenario.setToggleGroup(senar);
+        }
         menuBar.getMenus().addAll(senario);
         this.getChildren().addAll(menuBar);
     }
