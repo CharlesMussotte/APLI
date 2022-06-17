@@ -16,6 +16,7 @@ public class Lecture {
             ligne = bufferEntree.readLine ();
             if (ligne != null) {
                 tokenizer = new StringTokenizer(ligne ," ->");
+                System.out.println(tokenizer.nextToken());
             }
         }
         while (ligne != null );
