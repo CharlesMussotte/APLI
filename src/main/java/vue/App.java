@@ -8,8 +8,10 @@ import java.io.File;
 
 public class App extends Application{
     public void start(Stage stage)   {
+        File fileCss = new File("css"+File.separator+"gridpane.css");
         HBox root = new HBoxRoot();
-        Scene scene = new Scene(root,670,380);
+        Scene scene = new Scene(root,500,380);
+        scene.getStylesheets().add(fileCss.toURI().toString());
         stage.setScene(scene);
         stage.setTitle("APLI");
         stage.show();
