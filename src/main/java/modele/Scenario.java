@@ -40,5 +40,13 @@ public class Scenario {
     public String toString() {
         return vendeurs + "\n" + acheteurs ;
     }
+    public String toStringAcheteur(){
+        String str = acheteurs.toString().replaceAll("\\[|\\]", "").replaceAll(", ","\n");
+        return str;
+    }
+    public String toStringVendeur(){
+        String str = vendeurs.toString().replaceAll("\\[|\\]", "").replaceAll(", ","\n");
+        return str;
+    }
 
 }
