@@ -5,14 +5,14 @@ import javafx.scene.control.*;
 import javafx.scene.layout.HBox;
 
 public class HBoxRoot extends HBox {
-    private GridPaneAffichage affichage;
+    private static GridPaneAffichage affichage;
     private static Controleur controleur;
     public HBoxRoot() {
         affichage =new GridPaneAffichage();
         controleur = new Controleur();
         this.getChildren().addAll(affichage);
     }
-    public GridPaneAffichage getAffichage() {
+    public static GridPaneAffichage getAffichage() {
         return affichage;
     }
 
