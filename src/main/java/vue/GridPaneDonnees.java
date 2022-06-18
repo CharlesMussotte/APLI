@@ -10,14 +10,14 @@ import modele.Scenario;
 import java.io.File;
 import java.io.IOException;
 
+import controleur.Controleur;
+
 public class GridPaneDonnees extends GridPane {
     TextArea acheteur;
     TextArea vendeur;
     Menu senario;
     MenuBar menuBar;
-    Label labelTrajet;
-    Label labelNombreScenario;
-    Button boutonTrajet;
+    static Button  boutonTrajet;
     int nbSenar;
 
     public GridPaneDonnees() {
@@ -40,59 +40,17 @@ public class GridPaneDonnees extends GridPane {
             presenario.setOnAction(new EventHandler<ActionEvent>() {
                 @Override
                 public void handle(ActionEvent actionEvent) {
-                    int userData = (int) presenario.getUserData();
-                    if (userData == 0){
-                        try {
-                            Scenario senario = Lecture.lectureScenario(new File("C:\\Users\\theob\\IdeaProjects\\APLI\\Scenar\\scenario_0.txt"));
-                            acheteur.setText(senario.toStringAcheteur());
-                            vendeur.setText(senario.toStringVendeur());
-                        } catch (IOException e) {
-                            throw new RuntimeException(e);
-                        }
+                    MajDonnees((Integer) presenario.getUserData());
 
-                    }
-                    if (userData == 1){
-                        try {
-                            Scenario senario = Lecture.lectureScenario(new File("C:\\Users\\theob\\IdeaProjects\\APLI\\Scenar\\scenario_1_1.txt"));
-                            acheteur.setText(senario.toStringAcheteur());
-                            vendeur.setText(senario.toStringVendeur());
-                        } catch (IOException e) {
-                            throw new RuntimeException(e);
-                        }
-
-                    }
-                    if (userData == 2){
-                        try {
-                            Scenario senario = Lecture.lectureScenario(new File("C:\\Users\\theob\\IdeaProjects\\APLI\\Scenar\\scenario_1_2.txt"));
-                            acheteur.setText(senario.toStringAcheteur());
-                            vendeur.setText(senario.toStringVendeur());
-                        } catch (IOException e) {
-                            throw new RuntimeException(e);
-                        }
-
-                    }
-                    if (userData == 3){
-                        try {
-                            Scenario senario = Lecture.lectureScenario(new File("C:\\Users\\theob\\IdeaProjects\\APLI\\Scenar\\scenario_2_1.txt"));
-                            acheteur.setText(senario.toStringAcheteur());
-                            vendeur.setText(senario.toStringVendeur());
-                        } catch (IOException e) {
-                            throw new RuntimeException(e);
-                        }
-
-                    }
-                    if (userData == 04){
-                        try {
-                            Scenario senario = Lecture.lectureScenario(new File("C:\\Users\\theob\\IdeaProjects\\APLI\\Scenar\\scenario_2_2.txt"));
-                            acheteur.setText(senario.toStringAcheteur());
-                            vendeur.setText(senario.toStringVendeur());
-                        } catch (IOException e) {
-                            throw new RuntimeException(e);
-                        }
-                    }
                 }
             });
         }
+        boutonTrajet.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent actionEvent) {
+                HBoxRoot.changement();
+            }
+        });
 
         menuBar.getMenus().addAll(senario);
         int ligne = 0;
@@ -104,6 +62,64 @@ public class GridPaneDonnees extends GridPane {
         this.add(acheteur, 1, ligne, 5, taille);
         this.add(vendeur, 6, ligne, 5, taille);
         ligne = ligne + taille;
-        this.add(boutonTrajet, 6, ligne, 3, 1);
+        this.add(boutonTrajet, 7, ligne, 3, 1);
+    }
+
+
+
+
+
+
+
+    public void MajDonnees(int userData){
+        if (userData == 0){
+            try {
+                Scenario senario = Lecture.lectureScenario(new File("C:\\Users\\theob\\IdeaProjects\\APLI\\TourAPLI\\Scenar\\scenario_0.txt"));
+                acheteur.setText(senario.toStringAcheteur());
+                vendeur.setText(senario.toStringVendeur());
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+
+        }
+        if (userData == 1){
+            try {
+                Scenario senario = Lecture.lectureScenario(new File("C:\\Users\\theob\\IdeaProjects\\APLI\\TourAPLI\\Scenar\\scenario_1_1.txt"));
+                acheteur.setText(senario.toStringAcheteur());
+                vendeur.setText(senario.toStringVendeur());
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+
+        }
+        if (userData == 2){
+            try {
+                Scenario senario = Lecture.lectureScenario(new File("C:\\Users\\theob\\IdeaProjects\\APLI\\TourAPLI\\Scenar\\scenario_1_2.txt"));
+                acheteur.setText(senario.toStringAcheteur());
+                vendeur.setText(senario.toStringVendeur());
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+
+        }
+        if (userData == 3){
+            try {
+                Scenario senario = Lecture.lectureScenario(new File("C:\\Users\\theob\\IdeaProjects\\APLI\\TourAPLI\\Scenar\\scenario_2_1.txt"));
+                acheteur.setText(senario.toStringAcheteur());
+                vendeur.setText(senario.toStringVendeur());
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+
+        }
+        if (userData == 04){
+            try {
+                Scenario senario = Lecture.lectureScenario(new File("C:\\Users\\theob\\IdeaProjects\\APLI\\TourAPLI\\Scenar\\scenario_2_2.txt"));
+                acheteur.setText(senario.toStringAcheteur());
+                vendeur.setText(senario.toStringVendeur());
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        }
     }
 }

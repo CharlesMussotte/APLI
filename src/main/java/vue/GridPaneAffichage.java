@@ -12,17 +12,21 @@ public class GridPaneAffichage extends GridPane {
     MenuBar menuBar;
     Label labelTrajet;
     Label labelNombreScenario;
-    Button boutonDonné;
+    Button boutonDonne;
     int x;
     int a;
+    int nbSenar;
+    int longeur;
     public GridPaneAffichage() {
-        a = 26;
+        nbSenar = 5;
+        a = 10;
+        longeur =250;
         Label labelTitre = new Label("Association des Pokemonistes Libres");
         labelNombreScenario = new Label("Il y a " + a + " trajet possible");
-        boutonDonné = new Button("Donnée du Scenario");
+        boutonDonne = new Button("Donnée du Scenario");
         labelTitre.setId("titre");
         trajet = new TextArea();
-        trajet.setText("Taille du trajet: _ km");
+        trajet.setText("Taille du trajet: "+ longeur +" km");
         menuBar = new MenuBar();
         Button boutonNext = new Button(">");
         Button boutonBefore = new Button("<");
@@ -33,12 +37,19 @@ public class GridPaneAffichage extends GridPane {
 
         senario = new Menu("Senario");
         ToggleGroup senar = new ToggleGroup();
-        for (int i = 0; i < 5; i++) {
-            RadioMenuItem presenario = new RadioMenuItem("Senario " + i);
+        for (int i =0 ; i < nbSenar; i++) {
+            RadioMenuItem presenario = new RadioMenuItem("Scenario " + i);
             senario.getItems().addAll(presenario);
             presenario.setToggleGroup(senar);
+            presenario.setUserData(i);
             presenario.setOnAction(HBoxRoot.getControleur());
         }
+        boutonDonne.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent actionEvent) {
+                HBoxRoot.changement();
+            }
+        });
 
         menuBar.getMenus().addAll(senario);
         int ligne = 0;
@@ -53,7 +64,7 @@ public class GridPaneAffichage extends GridPane {
         this.add(boutonNext, 6, ligne);
         this.add(boutonLast, 7, ligne++);
         this.add(labelNombreScenario, 0, ligne, 4, 1);
-        this.add(boutonDonné, 8, ligne, 3, 1);
+        this.add(boutonDonne, 7, ligne, 3, 1);
         boutonNext.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
@@ -86,6 +97,7 @@ public class GridPaneAffichage extends GridPane {
                     labelTrajet.setText("Trajet numéro " + x);
             }
         });
+
     }
     public void updateScenario(Scenario parScenar){
         trajet.setText(parScenar.toString());

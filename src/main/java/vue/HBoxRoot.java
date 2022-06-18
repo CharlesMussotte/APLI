@@ -1,15 +1,20 @@
 package vue;
 
+import com.sun.javafx.UnmodifiableArrayList;
 import controleur.Controleur;
+import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
+
+import java.util.List;
 
 public class HBoxRoot extends HBox {
     private static GridPaneAffichage affichage;
     private static GridPaneDonnees donnees;
     private static Controleur controleur;
-    private StackPane stackPane;
+    private static StackPane stackPane;
+    private static List<Node> listScrollPane;
     public HBoxRoot() {
         affichage =new GridPaneAffichage();
         donnees = new GridPaneDonnees();
@@ -19,6 +24,7 @@ public class HBoxRoot extends HBox {
         donnees.setId("opaque");
         stackPane.getChildren().add(donnees);
         stackPane.getChildren().add(affichage);
+        listScrollPane = stackPane.getChildren();
         this.getChildren().add(stackPane);
     }
     public static GridPaneAffichage getAffichage() {
@@ -31,5 +37,9 @@ public class HBoxRoot extends HBox {
 
     public static Controleur getControleur() {
         return controleur;
+    }
+
+    public static void  changement(){
+        listScrollPane.get(0).toFront();
     }
 }
