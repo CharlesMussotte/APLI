@@ -13,11 +13,17 @@ import java.io.IOException;
 
 public class Controleur implements EventHandler {
     public void handle(Event event) {
-        HBoxRoot root = (HBoxRoot) App.getRoot();
-        GridPaneAffichage affichage = root.getAffichage();
+        GridPaneAffichage affichage = HBoxRoot.getAffichage();
 
         if (event.getSource() instanceof RadioMenuItem) {
-
+            try {
+                Scenario senario = Lecture.lectureScenario(new File("Scenario"+File.separator+"scenario_0.txt"));
+                affichage.updateScenario(senario);
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+            String nom =((RadioMenuItem) event.getSource()).getText();
+            affichage.getMenu().setText(nom);
         }
 
     }
