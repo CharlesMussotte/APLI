@@ -1,18 +1,23 @@
 package vue;
 
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.scene.control.*;
 import javafx.scene.layout.GridPane;
+import modele.Scenario;
 
 public class GridPaneAffichage extends GridPane {
-    Label labelTitre;
     TextArea trajet;
+    Menu senario;
     MenuBar menuBar;
     Label labelTrajet;
     Label labelNombreScenario;
     Button boutonDonné;
+    int x;
+    int a;
     public GridPaneAffichage() {
-        int a = 26;
-        labelTitre = new Label("Association des Pokemonistes Libres");
+        a = 26;
+        Label labelTitre = new Label("Association des Pokemonistes Libres");
         labelNombreScenario = new Label("Il y a " + a + " trajet possible");
         boutonDonné = new Button("Donnée du Scenario");
         labelTitre.setId("titre");
@@ -23,9 +28,10 @@ public class GridPaneAffichage extends GridPane {
         Button boutonBefore = new Button("<");
         Button boutonLast = new Button(">>");
         Button boutonnFirst = new Button("<<");
-        labelTrajet = new Label("Trajet numéro");
+        x = 1;
+        labelTrajet = new Label("Trajet numéro "+x);
 
-        Menu senario = new Menu("Senario");
+        senario = new Menu("Senario");
         ToggleGroup senar = new ToggleGroup();
         for (int i = 0; i < 5; i++) {
             RadioMenuItem presenario = new RadioMenuItem("Senario " + i);
@@ -48,5 +54,44 @@ public class GridPaneAffichage extends GridPane {
         this.add(boutonLast, 7, ligne++);
         this.add(labelNombreScenario, 0, ligne, 4, 1);
         this.add(boutonDonné, 8, ligne, 3, 1);
+        boutonNext.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent actionEvent) {
+                if (x<a){
+                x+=1;
+                labelTrajet.setText("Trajet numéro "+x);
+                }
+            }
+        });
+        boutonBefore.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent actionEvent) {
+                if (x>1) {
+                    x -= 1;
+                    labelTrajet.setText("Trajet numéro " + x);
+                }
+            }
+        });
+        boutonnFirst.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent actionEvent) {
+                    x = 1;
+                    labelTrajet.setText("Trajet numéro " + x);
+            }
+        });
+        boutonLast.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent actionEvent) {
+                    x = a;
+                    labelTrajet.setText("Trajet numéro " + x);
+            }
+        });
+    }
+    public void updateScenario(Scenario parScenar){
+        trajet.setText(parScenar.toString());
+    }
+
+    public Menu getMenu() {
+        return senario;
     }
 }
