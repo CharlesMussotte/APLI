@@ -8,11 +8,17 @@ public class Graph {
     private ArrayList sommets;
     private ArrayList[] voisins;
 
+
+    //----- CONSTRUCTEURS -----
+
     public Graph (TreeMap parDegre,ArrayList parSommet, ArrayList[] parVoisins){
         degreEntrant=parDegre;
         sommets=parSommet;
         voisins=parVoisins;
     }
+
+
+    //----- ACCESSEURS -----
 
     public ArrayList getSommets() {
         return sommets;
@@ -25,5 +31,11 @@ public class Graph {
     public ArrayList[] getVoisins() {
         return voisins;
     }
-    public String toString(){return sommets.toString();}
+
+
+    //----- TO STRING -----
+    
+    public String toString(){
+        return sommets.toString();
+    }
 }
