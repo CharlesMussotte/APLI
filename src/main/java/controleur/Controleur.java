@@ -1,7 +1,6 @@
 package controleur;
 import javafx.event.Event;
 import javafx.event.EventHandler;
-import javafx.scene.control.Button;
 import javafx.scene.control.RadioMenuItem;
 import vue.GridPaneAffichage;
 import vue.GridPaneDonnees;
@@ -14,7 +13,7 @@ public class Controleur implements EventHandler {
 
         if (event.getSource() instanceof RadioMenuItem) {
             int numScene = (int)((RadioMenuItem) event.getSource()).getUserData();
-            donnes.MajDonnees(numScene);
+            donnes.majDonnees(numScene);
         }
     }
 }
