@@ -11,6 +11,12 @@ public class Ville implements CONSTANTE_VILLE {
         distance=DISTANCE;
     }
 
+    public Ville() throws IOException {
+        Ville listVille = Lecture.lectureVilleDistance(new File("C:\\Users\\theob\\IdeaProjects\\APLI\\TourAPLI\\distances.txt"));
+        nomVille = listVille.getNomVille();
+        villes= listVille.getDistance();
+    }
+
 
     //----- ACCESSEURS -----
 
