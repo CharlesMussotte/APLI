@@ -12,10 +12,9 @@ public class Membres {
 
     //----- CONSTRUCTEURS -----
 
-    public Membres() throws IOException {
-        Membres listMembres = Lecture.lectureMembres(new File("C:\\Users\\theob\\IdeaProjects\\APLI\\TourAPLI\\membres_APLI.txt"));
-        noms = listMembres.getNomMembre();
-        villes= listMembres.getVilleMembre();
+    public Membres() {
+        noms = new ArrayList<>();
+        villes= new ArrayList<>();
     }
 
     public void ajoutMembre(String nom, String ville) {
