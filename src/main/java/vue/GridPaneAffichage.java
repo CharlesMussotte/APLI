@@ -4,7 +4,12 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.control.*;
 import javafx.scene.layout.GridPane;
+import modele.Itineraire;
+import modele.Lecture;
 import modele.Scenario;
+
+import java.io.File;
+import java.io.IOException;
 
 public class GridPaneAffichage extends GridPane {
     TextArea trajet;
@@ -42,19 +47,9 @@ public class GridPaneAffichage extends GridPane {
             senario.getItems().addAll(presenario);
             presenario.setToggleGroup(senar);
             presenario.setUserData(i);
-            presenario.setOnAction(new EventHandler<ActionEvent>() {
-                @Override
-                public void handle(ActionEvent actionEvent) {
-                    HBoxRoot.getDonnees().majDonnees((int)presenario.getUserData());
-                }
-            });
+            presenario.setOnAction(HBoxRoot.getControleur());
         }
-        boutonDonne.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent actionEvent) {
-                HBoxRoot.changement();
-            }
-        });
+        boutonDonne.setOnAction(HBoxRoot.getControleur());
 
         menuBar.getMenus().addAll(senario);
         int ligne = 0;
@@ -104,8 +99,9 @@ public class GridPaneAffichage extends GridPane {
         });
 
     }
-    public void updateScenario(Scenario parScenar){
-        trajet.setText(parScenar.toString());
+    public void updateScenario(Scenario senario) throws IOException {
+        Itineraire itineraire = new Itineraire(senario);
+        trajet.setText(itineraire.toString());
     }
 
     public Menu getMenu() {
