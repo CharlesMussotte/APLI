@@ -10,7 +10,7 @@ import java.io.File;
 import java.io.IOException;
 
 public class App extends Application{
-    public void start(Stage stage) throws IOException {
+    public void start(Stage stage) {
         File fileCss = new File("css"+File.separator+"gridpane.css");
         HBox root = new HBoxRoot();
         Scene scene = new Scene(root,500,380);

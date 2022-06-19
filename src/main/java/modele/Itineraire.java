@@ -1,37 +1,47 @@
 package modele;
 
+import java.io.File;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.TreeMap;
+
 public class Itineraire {
-    private Ville[] listVille;
+    private List listVille;
 
     //----- CONSTRUCTEURS -----
 
-    public Itineraire(Ville[] parListVille){
+    public Itineraire(List parListVille){
         listVille=parListVille;
     }
 
-    public Itineraire(int parNombreLigne){
-        ArrayList<Ville> sources = new ArrayList<Ville>();
+    public void Itineraire(File fichier, Scenario scenario) throws IOException {
+        Membres membres = new Membres();
+        ArrayList<String> noms= (ArrayList<String>) membres.getNomMembre();
+        ArrayList<String> villes= (ArrayList<String>) membres.getVilleMembre();
+        ArrayList<String> sources = new ArrayList<>();
         TreeMap treeSuccesseurs = new TreeMap();
         TreeMap treeNBPredesseurs = new TreeMap();
-        ArrayList<Ville> listeVilleItineraire = new ArrayList<Ville>();
-
-        while(sources.length() != 0){
-            Ville actuel = sources.get(1);
-            ArrayList successeursDeActuel = treeSuccesseurs.getKey(actuel);
-            while (successeursDeActuel != 0){
-                treeNBPredesseurs.getKey(successeursDeActuel.getKey(1)) - 1;
-                if (treeNBPredesseurs.getKey(successeursDeActuel.getKey(1)) == 0){sources.put(treeNBPredesseurs.getKey(successeursDeActuel.getKey(1)))}
-            sources.remove(sources.get(1));
-            listeVilleItineraire.add(actuel);
+        ArrayList<String> listeVilleItineraire = new ArrayList<>();
+        ArrayList<String> vendres = (ArrayList<String>) scenario.getVendeurs();
+        ArrayList<String> acheteurs = (ArrayList<String>) scenario.getAcheteurs();
+        ArrayList<int> villeVendres = new ArrayList();
+        ArrayList<int> villeAcheteurs = new ArrayList();
+        for (String vendeur : vendres){
+            int nb =0;
+            while (vendeur != noms.get(nb)){
+                nb++;
             }
-        listVille= listeVilleItineraire;
+            villeVendres.add(nb);
+        }
+        for (String acheteur : acheteurs){
+            int nb =0;
+            while (acheteur != noms.get(nb)){
+                nb++;
+            }
+            villeAcheteurs.add(nb);
         }
 
-
-        while (file.length != 0){
-            file.remove(1);
-            for (int i=0;)
-        }
 
     }
 
@@ -50,7 +60,7 @@ public class Itineraire {
 
     //----- ACCESSEURS -----
 
-    public Ville[] getListVille() {
+    public List getListVille() {
         return listVille;
     }
 
