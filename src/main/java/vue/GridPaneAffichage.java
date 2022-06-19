@@ -13,16 +13,16 @@ public class GridPaneAffichage extends GridPane {
     Label labelTrajet;
     Label labelNombreScenario;
     Button boutonDonne;
-    int x;
-    int a;
+    int numTrajet;
+    int nbTrajet;
     int nbSenar;
     int longeur;
     public GridPaneAffichage() {
         nbSenar = 5;
-        a = 10;
+        nbTrajet = 10;
         longeur =250;
         Label labelTitre = new Label("Association des Pokemonistes Libres");
-        labelNombreScenario = new Label("Il y a " + a + " trajet possible");
+        labelNombreScenario = new Label("Il y a " + nbTrajet + " trajet possible");
         boutonDonne = new Button("Donnée du Scenario");
         labelTitre.setId("titre");
         trajet = new TextArea();
@@ -32,8 +32,8 @@ public class GridPaneAffichage extends GridPane {
         Button boutonBefore = new Button("<");
         Button boutonLast = new Button(">>");
         Button boutonnFirst = new Button("<<");
-        x = 1;
-        labelTrajet = new Label("Trajet numéro "+x);
+        numTrajet = 1;
+        labelTrajet = new Label("Trajet numéro "+ numTrajet);
 
         senario = new Menu("Senario");
         ToggleGroup senar = new ToggleGroup();
@@ -42,7 +42,12 @@ public class GridPaneAffichage extends GridPane {
             senario.getItems().addAll(presenario);
             presenario.setToggleGroup(senar);
             presenario.setUserData(i);
-            presenario.setOnAction(HBoxRoot.getControleur());
+            presenario.setOnAction(new EventHandler<ActionEvent>() {
+                @Override
+                public void handle(ActionEvent actionEvent) {
+                    HBoxRoot.getDonnees().majDonnees((int)presenario.getUserData());
+                }
+            });
         }
         boutonDonne.setOnAction(new EventHandler<ActionEvent>() {
             @Override
@@ -68,33 +73,33 @@ public class GridPaneAffichage extends GridPane {
         boutonNext.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
-                if (x<a){
-                x+=1;
-                labelTrajet.setText("Trajet numéro "+x);
+                if (numTrajet <nbTrajet){
+                numTrajet +=1;
+                labelTrajet.setText("Trajet numéro "+ numTrajet);
                 }
             }
         });
         boutonBefore.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
-                if (x>1) {
-                    x -= 1;
-                    labelTrajet.setText("Trajet numéro " + x);
+                if (numTrajet >1) {
+                    numTrajet -= 1;
+                    labelTrajet.setText("Trajet numéro " + numTrajet);
                 }
             }
         });
         boutonnFirst.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
-                    x = 1;
-                    labelTrajet.setText("Trajet numéro " + x);
+                    numTrajet = 1;
+                    labelTrajet.setText("Trajet numéro " + numTrajet);
             }
         });
         boutonLast.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
-                    x = a;
-                    labelTrajet.setText("Trajet numéro " + x);
+                    numTrajet = nbTrajet;
+                    labelTrajet.setText("Trajet numéro " + numTrajet);
             }
         });
 

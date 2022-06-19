@@ -10,8 +10,6 @@ import modele.Scenario;
 import java.io.File;
 import java.io.IOException;
 
-import controleur.Controleur;
-
 public class GridPaneDonnees extends GridPane {
     TextArea acheteur;
     TextArea vendeur;
@@ -40,7 +38,7 @@ public class GridPaneDonnees extends GridPane {
             presenario.setOnAction(new EventHandler<ActionEvent>() {
                 @Override
                 public void handle(ActionEvent actionEvent) {
-                    MajDonnees((Integer) presenario.getUserData());
+                    majDonnees((Integer) presenario.getUserData());
 
                 }
             });
@@ -65,13 +63,9 @@ public class GridPaneDonnees extends GridPane {
         this.add(boutonTrajet, 7, ligne, 3, 1);
     }
 
+//--------------- Methode suplémentaire pour mettre à jour les données----------------------
 
-
-
-
-
-
-    public void MajDonnees(int userData){
+    public void majDonnees(int userData){
         if (userData == 0){
             try {
                 Scenario senario = Lecture.lectureScenario(new File("C:\\Users\\theob\\IdeaProjects\\APLI\\TourAPLI\\Scenar\\scenario_0.txt"));
@@ -117,6 +111,7 @@ public class GridPaneDonnees extends GridPane {
                 Scenario senario = Lecture.lectureScenario(new File("C:\\Users\\theob\\IdeaProjects\\APLI\\TourAPLI\\Scenar\\scenario_2_2.txt"));
                 acheteur.setText(senario.toStringAcheteur());
                 vendeur.setText(senario.toStringVendeur());
+
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
