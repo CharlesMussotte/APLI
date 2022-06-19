@@ -7,6 +7,9 @@ import java.io.IOException;
 import java.util.StringTokenizer;
 
 public class Lecture {
+
+    // ----- CONSTRUCTEURS -----
+
     public static Scenario lectureScenario (File fichier) throws IOException {
         Scenario scenario = new Scenario();
         BufferedReader bufferEntree = new BufferedReader(new FileReader(fichier));
@@ -23,6 +26,9 @@ public class Lecture {
         bufferEntree.close();
         return scenario;
     }
+
+    // ----- LECTURES -----
+
     public static Membres lectureMembres (File fichier) throws IOException {
         Membres membres = new Membres();
         BufferedReader bufferEntree = new BufferedReader(new FileReader(fichier));
@@ -39,6 +45,27 @@ public class Lecture {
         bufferEntree.close();
         return membres;
     }
+
+    public static Ville lectureVilleDistance (File fichier) throws IOException {
+        Ville ville = new Ville();
+        BufferedReader bufferEntree = new BufferedReader(new FileReader(fichier));
+        String ligne ;
+        StringTokenizer tokenizer ;
+        do {
+            ligne = bufferEntree.readLine ();
+            if (ligne != null) {
+                tokenizer = new StringTokenizer(ligne ,"-");
+                membres.ajoutMembre(tokenizer.nextToken(), tokenizer.nextToken());
+            }
+        }
+        while (ligne != null );
+        bufferEntree.close();
+        return membres;
+    }
+
+
+
+    // ----- METHODES -----
 
     public static int compteLigne(File fichier) throws IOException {
         int nbrLine = 0;
