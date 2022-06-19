@@ -10,10 +10,27 @@ public class Itineraire {
     }
 
     public Itineraire(int parNombreLigne){
-        ArrayList<Ville> file = new ArrayList<Ville>();
-        While (file.length != 0){
+        ArrayList<Ville> sources = new ArrayList<Ville>();
+        TreeMap treeSuccesseurs = new TreeMap();
+        TreeMap treeNBPredesseurs = new TreeMap();
+        ArrayList<Ville> listeVilleItineraire = new ArrayList<Ville>();
+
+        while(sources.length() != 0){
+            Ville actuel = sources.get(1);
+            ArrayList successeursDeActuel = treeSuccesseurs.getKey(actuel);
+            while (successeursDeActuel != 0){
+                treeNBPredesseurs.getKey(successeursDeActuel.getKey(1)) - 1;
+                if (treeNBPredesseurs.getKey(successeursDeActuel.getKey(1)) == 0){sources.put(treeNBPredesseurs.getKey(successeursDeActuel.getKey(1)))}
+            sources.remove(sources.get(1));
+            listeVilleItineraire.add(actuel);
+            }
+        listVille= listeVilleItineraire;
+        }
+
+
+        while (file.length != 0){
             file.remove(1);
-            For(int i=0;)
+            for (int i=0;)
         }
 
     }
