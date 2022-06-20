@@ -82,8 +82,6 @@ public class Itineraire {
         }
         treeNBPredesseurs.put("Velizy",0);
         sources.add("Velizy");
-        System.out.println(treeNBPredesseurs);
-        System.out.println(treeSuccesseurs);
         while (sources.size()>0){
             if (!listeVilleItineraire.contains(sources.get(0))){
                 for (String ville : treeNBPredesseurs.keySet()) {
@@ -136,9 +134,7 @@ public class Itineraire {
 
     public static int calculeDistance(Itineraire itineraire) throws IOException {
         ArrayList<String>  villes = (ArrayList<String>) Lecture.lectureVille(new File("TourAPLI\\distances.txt")).get(0);
-        System.out.println(villes);
         ArrayList<ArrayList> distance = (ArrayList<ArrayList>) Lecture.lectureVille(new File("TourAPLI\\distances.txt")).get(1);
-        System.out.println(distance);
         int compteur =0;
         int x = 0;
         for (int i = 0; i<itineraire.getListVille().size()-1; i++){
@@ -154,7 +150,6 @@ public class Itineraire {
                 x+=1;
             }
             x=0;
-            System.out.println(distance.get(indice1).get(indice2));
             compteur += (int) distance.get(indice1).get(indice2);
         }
         return compteur;

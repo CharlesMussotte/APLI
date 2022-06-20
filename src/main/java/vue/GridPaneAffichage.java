@@ -31,7 +31,7 @@ public class GridPaneAffichage extends GridPane {
         boutonDonne = new Button("Donnée du Scenario");
         labelTitre.setId("titre");
         trajet = new TextArea();
-        trajet.setText("Taille du trajet: "+ longeur +" km");
+        trajet.setText("Veulliez choisir un scénario");
         menuBar = new MenuBar();
         Button boutonNext = new Button(">");
         Button boutonBefore = new Button("<");
