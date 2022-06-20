@@ -72,38 +72,55 @@ public class Itineraire {
             }
         }
         ArrayList<String> list = new ArrayList<>();
+        treeSuccesseurs.put("Velizy",list);
         for (String str : villeVendres) {
-            if (treeNBPredesseurs.get(str)== 1){
+            if (treeNBPredesseurs.get(str)== 1 && !treeSuccesseurs.get("Velizy").contains(str)){
                 list.add(str);
+                treeSuccesseurs.put("Velizy",list);
             }
 
         }
-        treeSuccesseurs.put("Velizy",list);
         treeNBPredesseurs.put("Velizy",0);
         sources.add("Velizy");
-
+        System.out.println(treeNBPredesseurs);
         System.out.println(treeSuccesseurs);
         while (sources.size()>0){
+            if (!listeVilleItineraire.contains(sources.get(0))){
+                for (String ville : treeNBPredesseurs.keySet()) {
+                    if (treeNBPredesseurs.get(ville) != 0 && treeSuccesseurs.get(sources.get(0)).contains(ville)){
+                        Integer i = treeNBPredesseurs.get(ville);
+                        i -=1;
+                        treeNBPredesseurs.put(ville,i);
+                    }
+                }
+                listeVilleItineraire.add(sources.get(0));
+                sources.remove(sources.get(0));
 
-            System.out.println(listeVilleItineraire);
-            for (String ville : treeNBPredesseurs.keySet()) {
-
-                if (treeSuccesseurs.get(sources.get(0)) != null && treeNBPredesseurs.get(ville) != 0 && treeSuccesseurs.get(sources.get(0)).contains(ville)){
-                    Integer i = treeNBPredesseurs.get(ville);
-                    i -=1;
-                    treeNBPredesseurs.put(ville,i);
-                    System.out.println(treeNBPredesseurs);
+                for (String ville : treeNBPredesseurs.keySet()) {
+                    if (treeNBPredesseurs.get(ville) == 0 && !listeVilleItineraire.contains(ville)){
+                        sources.add(ville);
+                    }
+                }
+                for (String ville : treeNBPredesseurs.keySet()) {
+                    if (sources.size()==0) {
+                        if(treeNBPredesseurs.get(ville) != 0){
+                            int i = 1;
+                            while (i<30 && sources.size() == 0){
+                                if (treeNBPredesseurs.get(ville) == 1 && !listeVilleItineraire.contains(ville)){
+                                    sources.add(ville);
+                                }
+                                i++;
+                            }
+                        }
+                    }
                 }
             }
-            listeVilleItineraire.add(sources.get(0));
-            sources.remove(0);
-
-            for (String str : treeNBPredesseurs.keySet()) {
-                if (treeNBPredesseurs.get(str) == 0 && !listeVilleItineraire.contains(str)){
-                    sources.add(str);
-                }
+            else {
+                sources.remove(sources.get(0));
             }
+
         }
+        listeVilleItineraire.add("Velizy");
         listVille =listeVilleItineraire;
     }
 
@@ -117,7 +134,9 @@ public class Itineraire {
         listVille.remove(ville);
     }
 
-
+    public int calculeDistance(Itineraire itineraire){
+        return 1;
+    }
 
 
     //----- ACCESSEURS -----
@@ -130,6 +149,6 @@ public class Itineraire {
     //----- TO STRING -----
 
     public String toString(){
-        return listVille.toString();
+        return listVille.toString().replaceAll("\\[|\\]", "").replaceAll(", ","\n");
     }
 }
