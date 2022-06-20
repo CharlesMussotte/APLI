@@ -20,16 +20,19 @@ public class GridPaneDonnees extends GridPane {
 
     public GridPaneDonnees() {
         nbSenar = 5;
+
         Label labelTitre = new Label("Association des Pokemonistes Libres");
+        labelTitre.setId("titre");
         Label labelVendeur = new Label("Vendeur");
         Label labelAcheteur = new Label("Acheteur");
+        ToggleGroup senar = new ToggleGroup();
+
         boutonTrajet = new Button("Trajets du Scenario");
-        labelTitre.setId("titre");
         acheteur = new TextArea();
         vendeur = new TextArea();
         menuBar = new MenuBar();
         senario = new Menu("Senario");
-        ToggleGroup senar = new ToggleGroup();
+
         for (int i = 0; i < nbSenar; i++) {
             RadioMenuItem presenario = new RadioMenuItem("Scenario " + i);
             senario.getItems().addAll(presenario);
@@ -37,9 +40,12 @@ public class GridPaneDonnees extends GridPane {
             presenario.setUserData(i);
             presenario.setOnAction(HBoxRoot.getControleur());
         }
+
         boutonTrajet.setOnAction(HBoxRoot.getControleur());
 
         menuBar.getMenus().addAll(senario);
+
+        //-----Mise en place des objets dans la GridPane-----
         int ligne = 0;
         int taille = 10;
         this.add(menuBar, 0, ligne, 2, 1);
