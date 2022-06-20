@@ -134,8 +134,30 @@ public class Itineraire {
         listVille.remove(ville);
     }
 
-    public int calculeDistance(Itineraire itineraire){
-        return 1;
+    public static int calculeDistance(Itineraire itineraire) throws IOException {
+        ArrayList<String>  villes = (ArrayList<String>) Lecture.lectureVille(new File("TourAPLI\\distances.txt")).get(0);
+        System.out.println(villes);
+        ArrayList<ArrayList> distance = (ArrayList<ArrayList>) Lecture.lectureVille(new File("TourAPLI\\distances.txt")).get(1);
+        System.out.println(distance);
+        int compteur =0;
+        int x = 0;
+        for (int i = 0; i<itineraire.getListVille().size()-1; i++){
+            int indice1 = 0;
+            int indice2 = 0;
+            while (!itineraire.getListVille().get(i).equals(villes.get(x))){
+                indice1 +=1;
+                x+=1;
+            }
+            x = 0;
+            while (!itineraire.getListVille().get(i+1).equals(villes.get(x))){
+                indice2 +=1;
+                x+=1;
+            }
+            x=0;
+            System.out.println(distance.get(indice1).get(indice2));
+            compteur += (int) distance.get(indice1).get(indice2);
+        }
+        return compteur;
     }
 
 
