@@ -25,7 +25,7 @@ public class Controleur implements EventHandler {
 
             if (numScene == 0){
                 try {
-                    Scenario senario = Lecture.lectureScenario(new File("C:\\Users\\theob\\IdeaProjects\\APLI\\TourAPLI\\Scenar\\scenario_0.txt"));
+                    Scenario senario = Lecture.lectureScenario(new File("TourAPLI\\Scenar\\scenario_0.txt"));
                     donnes.majDonnees(senario);
                     affichage.updateScenario(senario);
                 } catch (IOException e) {
@@ -35,7 +35,7 @@ public class Controleur implements EventHandler {
             }
             if (numScene == 1){
                 try {
-                    Scenario senario = Lecture.lectureScenario(new File("C:\\Users\\theob\\IdeaProjects\\APLI\\TourAPLI\\Scenar\\scenario_1_1.txt"));
+                    Scenario senario = Lecture.lectureScenario(new File("TourAPLI\\Scenar\\scenario_1_1.txt"));
                     donnes.majDonnees(senario);
                     affichage.updateScenario(senario);
                 } catch (IOException e) {
@@ -45,7 +45,7 @@ public class Controleur implements EventHandler {
             }
             if (numScene == 2){
                 try {
-                    Scenario senario = Lecture.lectureScenario(new File("C:\\Users\\theob\\IdeaProjects\\APLI\\TourAPLI\\Scenar\\scenario_1_2.txt"));
+                    Scenario senario = Lecture.lectureScenario(new File("TourAPLI\\Scenar\\scenario_1_2.txt"));
                     donnes.majDonnees(senario);
                     affichage.updateScenario(senario);
                 } catch (IOException e) {
@@ -55,7 +55,7 @@ public class Controleur implements EventHandler {
             }
             if (numScene == 3){
                 try {
-                    Scenario senario = Lecture.lectureScenario(new File("C:\\Users\\theob\\IdeaProjects\\APLI\\TourAPLI\\Scenar\\scenario_2_1.txt"));
+                    Scenario senario = Lecture.lectureScenario(new File("TourAPLI\\Scenar\\scenario_2_1.txt"));
                     donnes.majDonnees(senario);
                     affichage.updateScenario(senario);
                 } catch (IOException e) {
@@ -65,7 +65,7 @@ public class Controleur implements EventHandler {
             }
             if (numScene == 04){
                 try {
-                    Scenario senario = Lecture.lectureScenario(new File("C:\\Users\\theob\\IdeaProjects\\APLI\\TourAPLI\\Scenar\\scenario_2_2.txt"));
+                    Scenario senario = Lecture.lectureScenario(new File("TourAPLI\\Scenar\\scenario_2_2.txt"));
                     donnes.majDonnees(senario);
                     affichage.updateScenario(senario);
                 } catch (IOException e) {
