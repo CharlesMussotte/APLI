@@ -3,21 +3,18 @@ package modele;
 import java.io.File;
 import java.io.IOException;
 
-public class Ville implements CONSTANTE_VILLE {
-    private final String nomVille;
-    private int[] distance;
+public class Ville {
+    private String nomVille;
+    private int[][] distance;
 
     //----- CONSTRUCTEURS -----
 
     Ville(String parVille){
         nomVille=parVille;
-        distance=DISTANCE;
+        distance= new int[][]{};
     }
 
-    public Ville() throws IOException {
-        Ville listVille = Lecture.lectureVilleDistance(new File("C:\\Users\\theob\\IdeaProjects\\APLI\\TourAPLI\\distances.txt"));
-        nomVille = listVille.getNomVille();
-    }
+
 
 
     //----- ACCESSEURS -----
@@ -26,7 +23,7 @@ public class Ville implements CONSTANTE_VILLE {
         return nomVille;
     }
 
-    public int[] getDistanceVille(){
+    public int[][] getDistanceVille(){
         return distance;
     }
 
