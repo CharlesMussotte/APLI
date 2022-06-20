@@ -1,5 +1,5 @@
 //----- IMPORTS -----
-    
+
 package modele;
 
 import java.io.File;
@@ -27,7 +27,7 @@ public class Itineraire {
         ArrayList<String> villes= (ArrayList<String>) membres.getVilleMembre(); // Listes membres et villes
 
         ArrayList<String> sources = new ArrayList<>(); // Liste de villes sources - Sert pour exploration en largeur
-        
+
         TreeMap<String,ArrayList> treeSuccesseurs = new TreeMap(); // Treemap successeur - Clé : Villes, Valeur : Liste de villes
         TreeMap<String, Integer> treeNBPredecesseurs = new TreeMap<>(); // TreeMap Nb prédecesseurs - Clé : Villes, Valeur : nb de prédecesseurs
 
@@ -58,7 +58,7 @@ public class Itineraire {
 
 // ----- CREATION DE treePredecesseurs ET treeNBPredecesseurs -----
 
-        for (int i=0; i<villeVendres.size();i++){ 
+        for (int i=0; i<villeVendres.size();i++){
 
             if(treeSuccesseurs.containsKey(villeVendres.get(i))){ // Vérifie si la ville[i] est déjà une clé
 
@@ -78,10 +78,10 @@ public class Itineraire {
                 }
             }
 
-// ----- 
+// -----
 
             else{ // Si la ville n'est pas déjà clé -> pas de successeur
-                
+
                 ArrayList<String> arrayListVendeur = new ArrayList<>();
                 ArrayList<String> arrayListAcheteur =new ArrayList<>();
 
@@ -129,7 +129,7 @@ public class Itineraire {
 
                 for (String ville : treeNBPredecesseurs.keySet()) {
 
-                    if (treeNBPredecesseurs.get(ville) != 0 && treeSuccesseurs.get(sources.get(0)).contains(ville)){  
+                    if (treeNBPredecesseurs.get(ville) != 0 && treeSuccesseurs.get(sources.get(0)).contains(ville)){
 
                         Integer i = treeNBPredecesseurs.get(ville); // Retirer 1 dans les nb pred
                         i -=1;
