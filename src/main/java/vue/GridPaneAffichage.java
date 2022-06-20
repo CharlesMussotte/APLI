@@ -101,7 +101,8 @@ public class GridPaneAffichage extends GridPane {
     }
     public void updateScenario(Scenario senario) throws IOException {
         Itineraire itineraire = new Itineraire(senario);
-        trajet.setText(itineraire.toString());
+        longeur = Itineraire.calculeDistance(itineraire);
+        trajet.setText("Taille du trajet: "+ longeur +" km"+"\n"+"\n"+itineraire);
     }
 
     public Menu getMenu() {
