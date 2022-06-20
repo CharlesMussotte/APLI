@@ -85,9 +85,10 @@ public class Itineraire {
         System.out.println(treeSuccesseurs);
         while (sources != null){
 
+            System.out.println(listeVilleItineraire);
             for (String ville : treeNBPredesseurs.keySet()) {
 
-                if (treeSuccesseurs.get(sources.get(0)).contains(ville) && treeNBPredesseurs.get(ville) != 0){
+                if (treeSuccesseurs.get(sources.get(0)) != null && treeNBPredesseurs.get(ville) != 0 && treeSuccesseurs.get(sources.get(0)).contains(ville)){
                     Integer i = treeNBPredesseurs.get(ville);
                     i -=1;
                     treeNBPredesseurs.put(ville,i);
