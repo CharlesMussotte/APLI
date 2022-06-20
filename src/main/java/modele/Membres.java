@@ -6,8 +6,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Membres {
-    List<String> noms ;
-    List <String> villes ;
+    static List<String> noms ;
+    static List <String> villes ;
 
 
     //----- CONSTRUCTEURS -----
@@ -17,7 +17,7 @@ public class Membres {
         villes= new ArrayList<>();
     }
 
-    public void ajoutMembre(String nom, String ville) {
+    public static void ajoutMembre(String nom, String ville) {
         noms.add(nom);
         villes.add(ville);
     }

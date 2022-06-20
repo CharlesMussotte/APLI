@@ -1,7 +1,10 @@
 package modele;
 
+import java.io.File;
+import java.io.IOException;
+
 public class Ville implements CONSTANTE_VILLE {
-    private String nomVille;
+    private final String nomVille;
     private int[] distance;
 
     //----- CONSTRUCTEURS -----
@@ -14,7 +17,6 @@ public class Ville implements CONSTANTE_VILLE {
     public Ville() throws IOException {
         Ville listVille = Lecture.lectureVilleDistance(new File("C:\\Users\\theob\\IdeaProjects\\APLI\\TourAPLI\\distances.txt"));
         nomVille = listVille.getNomVille();
-        villes= listVille.getDistance();
     }
 
 
@@ -24,7 +26,7 @@ public class Ville implements CONSTANTE_VILLE {
         return nomVille;
     }
 
-    public int[] getDistance(){
+    public int[] getDistanceVille(){
         return distance;
     }
 
@@ -33,5 +35,12 @@ public class Ville implements CONSTANTE_VILLE {
     
     public String toString(){
         return nomVille;
+    }
+
+    public void ajoutVille(String nextToken) {
+    }
+
+
+    public void ajoutDistanceVille(int i, Integer valueOf) {
     }
 }
