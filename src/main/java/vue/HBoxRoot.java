@@ -16,9 +16,9 @@ public class HBoxRoot extends HBox {
     private static StackPane stackPane;
     private static List<Node> listScrollPane;
     public HBoxRoot() {
+        controleur = new Controleur();
         affichage =new GridPaneAffichage();
         donnees = new GridPaneDonnees();
-        controleur = new Controleur();
         stackPane = new StackPane();
         affichage.setId("opaque");
         donnees.setId("opaque");
