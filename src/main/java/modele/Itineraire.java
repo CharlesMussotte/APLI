@@ -83,7 +83,7 @@ public class Itineraire {
         sources.add("Velizy");
 
         System.out.println(treeSuccesseurs);
-        while (sources != null){
+        while (sources.size()>0){
 
             System.out.println(listeVilleItineraire);
             for (String ville : treeNBPredesseurs.keySet()) {
