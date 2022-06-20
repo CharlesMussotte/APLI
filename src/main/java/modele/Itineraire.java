@@ -14,7 +14,7 @@ public class Itineraire {
     }
 
     public Itineraire(Scenario scenario) throws IOException {
-        Membres membres = Lecture.lectureMembres(new File("C:\\Users\\theob\\IdeaProjects\\APLI\\TourAPLI\\membres_APLI.txt"));;
+        Membres membres = Lecture.lectureMembres(new File("TourAPLI\\membres_APLI.txt"));;
         ArrayList<String> noms= (ArrayList<String>) membres.getNomMembre();
         ArrayList<String> villes= (ArrayList<String>) membres.getVilleMembre();
         ArrayList<String> sources = new ArrayList<>();
@@ -67,7 +67,7 @@ public class Itineraire {
         while (sources.size()>0){
 
             for (String ville : treeNBPredesseurs.keySet()) {
-                Integer i = treeNBPredesseurs.get(String.valueOf(ville));
+                Integer i = treeNBPredesseurs.get(ville);
                 i -=1;
                 treeNBPredesseurs.put(ville,i);
             }
@@ -86,11 +86,11 @@ public class Itineraire {
 
     //----- METHODES -----
 
-    public void ajoutVille(){
-
+    public void ajoutVille(String ville){
+        listVille.add(ville);
     }
-    public void supprimeVille(){
-
+    public void supprimeVille(String ville){
+        listVille.remove(ville);
     }
 
 
